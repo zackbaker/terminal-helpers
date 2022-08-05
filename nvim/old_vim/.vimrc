@@ -12,8 +12,8 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'dense-analysis/ale'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'joshdick/onedark.vim'
-Plugin 'nvie/vim-flake8'
-Plugin 'davidhalter/jedi-vim'
+"Plugin 'nvie/vim-flake8'
+"Plugin 'davidhalter/jedi-vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -44,6 +44,10 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+" Tab correctly
+nnoremap <C-Left> :tabprevious<CR>                                                                            
+nnoremap <C-Right> :tabnext<CR>
+
 " Enable folding
 set foldmethod=indent
 set foldlevel=99
@@ -53,13 +57,12 @@ nnoremap <space> za
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
-set textwidth=79
 set expandtab
 set autoindent
 set fileformat=unix
 set encoding=utf-8
 
-let g:ale_python_flake8_options = ['--ignore=E501'] 
+let g:ale_python_flake8_options=['--ignore=E501'] 
 
 " Color Scheme
 let g:solarized_termcolors=256
@@ -67,4 +70,4 @@ set background=dark
 colorscheme onedark
 
 " Autocomplete
-let g:ale_completion_enabled = 1
+" let g:ale_completion_enabled=0 

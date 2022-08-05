@@ -1,0 +1,31 @@
+#!/bin/bash
+
+pyvenvdir=$HOME/pyvenv
+
+[[ -d $pyvenvdir ]] || mkdir -p $pyvenvdir
+
+pyvenvs=($(find "${pyvenvdir}" -name "*activate"))
+create_new_venv=false
+
+pyvenvs+=("Create new venv")
+
+select pyvenv in "${pyvenvs[@]}"
+do
+    if [ "$pyvenv" = "Create new venv" ]
+    then
+        create_new_venv=true
+    else
+        echo "Setting source to $pyvenv"
+        source $pyvenv
+    fi
+    break
+done
+
+if [ $create_new_venv = true ]
+then
+    read -p "What would you like to name this venv: " py_venv_name
+    sudo pip install virtualenv
+    virtualenv -p python $pyvenvdir/$py_venv_name
+    source $pyvenvdir/$py_venv_name/bin/activate
+fi
+
