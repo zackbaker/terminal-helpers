@@ -44,6 +44,7 @@ return packer.startup(function(use)
   use "wbthomason/packer.nvim" -- Have packer manage itself
   use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
   use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
+  use "kyazdani42/nvim-web-devicons" -- Used by multiple plugins
 
   -- ColorScheme
   use "navarasu/onedark.nvim"
@@ -64,6 +65,7 @@ return packer.startup(function(use)
   -- LSP
   use "neovim/nvim-lspconfig" -- enable LSP
   use "williamboman/nvim-lsp-installer" -- simple to use language server installer
+  use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
 
   -- Telescope fuzzy finding
   use "nvim-telescope/telescope.nvim"
@@ -86,6 +88,24 @@ return packer.startup(function(use)
         require("gitsigns").setup()
       end
   }
+
+  -- NVIM Tree
+  use "kyazdani42/nvim-tree.lua"
+
+  -- Setting up "buffered tabbings"
+  use "akinsho/bufferline.nvim"
+  use "moll/vim-bbye"
+
+  -- Status Bar
+  use {
+      "tamton-aquib/staline.nvim",
+      config = function ()
+        require("staline").setup()
+      end
+  }
+
+  -- Terminal Integration
+  use "akinsho/toggleterm.nvim"
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
