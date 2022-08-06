@@ -21,7 +21,7 @@ nvim_tree.setup {
                 default = "",
                 symlink = "",
                 git = {
-                    unstaged = "",
+                    unstaged = "M",
                     staged = "S",
                     unmerged = "",
                     renamed = "➜",
@@ -38,5 +38,5 @@ nvim_tree.setup {
                 },
             }
         }
-    }
+    },
 }
