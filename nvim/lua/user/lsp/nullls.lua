@@ -8,6 +8,10 @@ local diagnostics = null_ls.builtins.diagnostics
 null_ls.setup {
     debug = false,
     sources = {
-        diagnostics.flake8,
+        diagnostics.flake8.with({
+            filter = function(diagnostic)
+                return diagnostic.code ~= "E501"
+            end
+        }),
     },
 }

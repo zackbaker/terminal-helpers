@@ -14,6 +14,7 @@
 #}
 
 echo "Installing needed packages"
+echo "If you're having LSP issues mess with Node, the version needs to be the newest!"
 sudo apt-get update
 sudo apt-get install neovim, ripgrep -y
 
