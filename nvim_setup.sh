@@ -5,26 +5,41 @@
 # TODO: Automatically install pyright using npm... Or force myself to choose all LSP servers to install?
 # TODO: Get the SQL syntax working in python again
 
-#echo "Setting up python packages"
-#{
-#    sudo pip install flake8
-#} || {
-#    echo "Need pip to install / Pip packages have failed"
-#    exit
-#}
+function check_and_install {
+    if ! command -v $1 &> /dev/null
+    then
+        sudo apt-get install $1 -y
+    else
+        echo "$1 already installed"
+    fi
+}
+
+function check_and_symlink {
+    if ! [[ -L "$2" ]]
+    then
+        ln -s $1 $2
+    else
+        echo "$2 symlink already exists"
+    fi
+}
 
 echo "Installing needed packages"
 echo "If you're having LSP issues mess with Node, the version needs to be the newest!"
 sudo apt-get update
-sudo apt-get install neovim, ripgrep -y
+# Install neovim from source
+check_and_install pip3
+sudo pip3 install flake8
+
+check_and_install ripgrep
 
 echo "Setting up sym links"
 project_root=$(dirname $(realpath $0))
+
 mkdir -p ~/.config/
-ln -s $project_root/nvim/ ~/.config/
+check_and_symlink $project_root/nvim/ ~/.config/
 
 # mkdir -p ~/.vim/after/syntax/
 # ln -s $project_root/vim_files/python.vim ~/.vim/after/syntax/python.vim
 
-sudo ln -s $project_root/gopyvenv /usr/bin/gopyvenv
+check_and_symlink $project_root/gopyvenv /usr/bin/gopyvenv
 
