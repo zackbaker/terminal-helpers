@@ -11,6 +11,7 @@ null_ls.setup {
         diagnostics.flake8.with({
             filter = function(diagnostic)
                 return diagnostic.code ~= "E501"
+                -- Also want to suppress W391
             end
         }),
     },
