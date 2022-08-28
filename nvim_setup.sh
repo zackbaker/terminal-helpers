@@ -25,8 +25,13 @@ function check_and_symlink {
 
 echo "Installing needed packages"
 echo "If you're having LSP issues mess with Node, the version needs to be the newest!"
-sudo apt-get update
-# Install neovim from source
+# sudo apt-get update
+
+cd ~
+git clone https://github.com/neovim/neovim.git
+cd neovim && make CMAKE_BUILD_TYPE=RelWithDebInfo
+sudo make install
+
 check_and_install pip3
 sudo pip3 install flake8
 
@@ -37,9 +42,6 @@ project_root=$(dirname $(realpath $0))
 
 mkdir -p ~/.config/
 check_and_symlink $project_root/nvim/ ~/.config/
-
-# mkdir -p ~/.vim/after/syntax/
-# ln -s $project_root/vim_files/python.vim ~/.vim/after/syntax/python.vim
 
 check_and_symlink $project_root/gopyvenv /usr/bin/gopyvenv
 
