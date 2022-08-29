@@ -40,9 +40,10 @@ keymap("n", "<S-h>", ":bprevious<CR>", opts)
 -- Telescope
 keymap("n", "<leader>f", "<cmd>Telescope find_files<CR>", opts)
 keymap("n", "<leader>g", "<cmd>Telescope live_grep<CR>", opts)
+keymap("n", "<leader>b", "<cmd>Telescope buffers<CR>", opts)
 
 -- Close Buffers
-keymap("n", "<A-w>", "<cmd>Bdelete!<CR>", opts)
+keymap("n", "<C-w>", "<cmd>Bdelete!<CR>", opts)
 
 -- Insert --
 -- Press jk fast to enter
