@@ -80,6 +80,7 @@ cmp.setup {
       "i",
       "s",
     }),
+    ['<cr>'] = cmp.mapping.confirm({ select = false }),
   },
   formatting = {
     fields = { "kind", "abbr", "menu" },
