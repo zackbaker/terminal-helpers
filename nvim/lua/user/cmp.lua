@@ -8,6 +8,15 @@ if not snip_status_ok then
   return
 end
 
+local ap_status_ok, cmp_autopairs = pcall(require, "nvim-autopairs.completion.cmp")
+if not ap_status_ok then
+    return
+end
+cmp.event:on(
+  'confirm_done',
+  cmp_autopairs.on_confirm_done()
+)
+
 require("luasnip/loaders/from_vscode").lazy_load()
 
 local check_backspace = function()
