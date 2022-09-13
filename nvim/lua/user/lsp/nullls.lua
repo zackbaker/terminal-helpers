@@ -10,7 +10,12 @@ null_ls.setup {
     sources = {
         diagnostics.flake8.with({
             filter = function(diagnostic)
-                return diagnostic.code ~= "E501" or diagnostic.code ~= "W391"
+                local ignore_codes = {"E501", "W391"}
+                for _, ignore_code in pairs(ignore_codes) do
+                    if diagnostic.code == ignore_code then
+                        return false
+                    end
+                end
             end
         }),
     },
