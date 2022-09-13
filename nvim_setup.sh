@@ -27,10 +27,10 @@ echo "Installing needed packages"
 echo "If you're having LSP issues mess with Node, the version needs to be the newest!"
 # sudo apt-get update
 
-cd ~
-git clone https://github.com/neovim/neovim.git
-cd neovim && make CMAKE_BUILD_TYPE=RelWithDebInfo
-sudo make install
+# cd ~
+# git clone https://github.com/neovim/neovim.git
+# cd neovim && make CMAKE_BUILD_TYPE=RelWithDebInfo
+# sudo make install
 
 check_and_install pip3
 sudo pip3 install flake8

@@ -10,8 +10,7 @@ null_ls.setup {
     sources = {
         diagnostics.flake8.with({
             filter = function(diagnostic)
-                return diagnostic.code ~= "E501"
-                -- Also want to suppress W391
+                return diagnostic.code ~= "E501" or diagnostic.code ~= "W391"
             end
         }),
     },
