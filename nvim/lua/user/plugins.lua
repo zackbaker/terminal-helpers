@@ -78,6 +78,7 @@ return packer.startup(function(use)
 
   -- Treesitter
   use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate", }
+  use {"nvim-treesitter/playground"}
 
   -- Comments Just starting it here, if I want to change settings I'll move into it's own file
   use {
@@ -117,10 +118,7 @@ return packer.startup(function(use)
   use {
       "lukas-reineke/indent-blankline.nvim",
       config = function ()
-        require("indent_blankline").setup {
-            show_current_context = true,
-            show_current_context_start = true
-        }
+        require("indent_blankline").setup {}
       end
   }
 
