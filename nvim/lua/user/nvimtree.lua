@@ -9,6 +9,9 @@ nvim_tree.setup {
         enable = true,
         show_on_dirs = true,
     },
+    view = {
+        width = 50,
+    },
     renderer = {
         highlight_git = true,
         -- indent_markers = { enable = true },
