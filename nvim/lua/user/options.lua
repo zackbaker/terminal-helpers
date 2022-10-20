@@ -5,7 +5,7 @@ local options = {
      completeopt = { "menuone", "noselect" }, -- mostly just for cmp
      conceallevel = 0,                        -- so that `` is visible in markdown files
      fileencoding = "utf-8",                  -- the encoding written to a file
-     hlsearch = false,                        -- highlight all matches on previous search pattern
+     hlsearch = true,                        -- highlight all matches on previous search pattern
      ignorecase = true,                       -- ignore case in search patterns
      mouse = "",                             -- allow the mouse to be used in neovim
      pumheight = 10,                          -- pop up menu height
@@ -34,6 +34,9 @@ local options = {
      sidescrolloff = 8,
      guifont = "monospace:h17",               -- the font used in graphical neovim applications
      laststatus = 3,
+     foldmethod = "expr",
+     foldexpr = "nvim_treesitter#foldexpr()",
+     foldlevel = 999,
 }
 
 vim.opt.shortmess:append "c"
@@ -42,6 +45,5 @@ for k, v in pairs(options) do
     vim.opt[k] = v
 end
 
-vim.cmd "set whichwrap+=<,>,[,],h,l"
 vim.cmd [[set iskeyword+=-]]
 vim.cmd [[set formatoptions-=cro]] -- TODO: this doesn't seem to work
