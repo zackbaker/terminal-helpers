@@ -49,29 +49,31 @@ return packer.startup(function(use)
   -- ColorScheme
   use "navarasu/onedark.nvim"
 
-  -- cmp plugins
-  use "hrsh7th/nvim-cmp" -- The completion plugin
-  use "hrsh7th/cmp-buffer" -- buffer completions
-  use "hrsh7th/cmp-path" -- path completions
-  use "hrsh7th/cmp-cmdline" -- cmdline completions
-  use "saadparwaiz1/cmp_luasnip" -- snippet completions
-  use "hrsh7th/cmp-nvim-lsp"
-  use "hrsh7th/cmp-nvim-lua"
-
-  -- snippets
-  use "L3MON4D3/LuaSnip" --snippet engine
-  use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
-
   -- autopairs
   use {
       'windwp/nvim-autopairs',
-      config = function() require("nvim-autopairs").setup {} end
+      config = function() 
+        require("nvim-autopairs").setup {}
+      end
   }
 
   -- LSP
-  use "neovim/nvim-lspconfig" -- enable LSP
-  use "williamboman/nvim-lsp-installer" -- simple to use language server installer
-  use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
+  use {
+    'VonHeikemen/lsp-zero.nvim',
+    branch = 'v3.x',
+    requires = {
+        -- mange LSP servers from neovim
+        {'williamboman/mason.nvim'},
+        {'williamboman/mason-lspconfig.nvim'},
+
+        -- LSP Support
+        {'neovim/nvim-lspconfig'},
+        -- Autocompletion
+        {'hrsh7th/nvim-cmp'},
+        {'hrsh7th/cmp-nvim-lsp'},
+        {'L3MON4D3/LuaSnip'},
+    }
+  }
 
   -- Telescope fuzzy finding
   use "nvim-telescope/telescope.nvim"
@@ -115,15 +117,7 @@ return packer.startup(function(use)
   use "akinsho/toggleterm.nvim"
 
   -- Adding indent lines
-  use {
-      "lukas-reineke/indent-blankline.nvim",
-      config = function ()
-        require("indent_blankline").setup {
-            show_current_context = true,
-            show_current_context_start = true,
-        }
-      end
-  }
+  use "lukas-reineke/indent-blankline.nvim"
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
