@@ -35,16 +35,17 @@ def run():
         ''')
         input('Once the above is finish hit enter to continue')
 
-    home_dir = os.path.expanduser('~')
-    helpers.run_cmd(f'cd {home_dir} && git clone https://github.com/neovim/neovim.git')
+    home_dir = helpers.get_homedir()
+    if not os.path.isdir(f'{home_dir}/neovim'):
+        helpers.run_cmd(f'cd {home_dir} && git clone https://github.com/neovim/neovim.git')
 
-    neovim_install = [
-        f'cd {home_dir}/neovim',
-        'git checkout stable',
-        'make CMAKE_BUILD_TYPE=RelWithDebInfo',
-        'sudo make install'
-    ]
-    helpers.run_cmd('&&'.join(neovim_install))
+        neovim_install = [
+            f'cd {home_dir}/neovim',
+            'git checkout stable',
+            'make CMAKE_BUILD_TYPE=RelWithDebInfo',
+            'sudo make install'
+        ]
+        helpers.run_cmd('&&'.join(neovim_install))
 
     helpers.run_cmd(f'mkdir -p {home_dir}/.config')
 

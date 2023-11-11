@@ -10,7 +10,7 @@ def check_zshrc(match, exact=False):
     :param match: Phrase to match
     :param exact: Exact match
     """
-    home_dir = os.path.expanduser('~')
+    home_dir = get_homedir()
     with open(f'{home_dir}/.zshrc', 'r') as fp:
         for line in fp.readlines():
             if exact:
@@ -22,6 +22,10 @@ def check_zshrc(match, exact=False):
     return False
         
 def write_zshrc(line):
-    home_dir = os.path.expanduser('~')
+    home_dir = get_homedir()
     with open(f'{home_dir}/.zshrc', 'a') as fp:
         fp.write(f'{line}\n')
+
+
+def get_homedir():
+    return os.path.expanduser('~')
