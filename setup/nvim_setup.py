@@ -15,7 +15,8 @@ install_packages = [
     'unzip',
     'ripgrep',
     'nodejs',
-    'npm'
+    'npm',
+    'xclip'
 ]
 
 def run():
