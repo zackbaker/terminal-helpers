@@ -23,7 +23,11 @@ def run():
     helpers.run_cmd(f'sudo apt-get install {" ".join(install_packages)} -y')
 
     font_dir = '/usr/share/fonts/TTF/Hack'
-    font_dir_count = len(os.listdir(font_dir))
+    try:
+        font_dir_count = len(os.listdir(font_dir))
+    except FileNotFoundError:
+        font_dir_count = 0
+
     if font_dir_count == 0:
         helpers.run_cmd('wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/Hack.zip')
         helpers.run_cmd(f'sudo mkdir -p {font_dir}')
@@ -31,7 +35,6 @@ def run():
         helpers.run_cmd('rm Hack.zip')
 
         print('''
-            Install fonts saved to Downloads folder then
             Right click on terminal click Profiles and then Profile Preferences and select Hack Font as terminal Font
         ''')
         input('Once the above is finish hit enter to continue')
