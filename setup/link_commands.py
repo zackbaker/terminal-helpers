@@ -11,5 +11,5 @@ def copy_command(command_name):
 def run():
     command_path = f'/usr/local/bin'
     commands_dir = f'{os.getcwd()}/commands'
-    helpers.run_cmd(f'sudo cp {commands_dir}/gopyvenv {command_path}')
+    # helpers.run_cmd(f'sudo cp {commands_dir}/gopyvenv {command_path}')
 

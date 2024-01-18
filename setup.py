@@ -1,4 +1,4 @@
-from setup import oh_my_zsh, python_setup, nvim_setup, helpers, link_commands
+from setup import oh_my_zsh, python_setup, nvim_setup, helpers, link_commands, docker
 
 helpers.run_cmd('sudo apt-get update')
 
@@ -10,3 +10,4 @@ if not helpers.check_zshrc('alias python="python3"'):
 python_setup.run()
 nvim_setup.run()
 link_commands.run()
+docker.run()
