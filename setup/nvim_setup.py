@@ -57,6 +57,11 @@ def run():
     if current_dir.split('/')[-1] != 'terminal-helpers':
         raise Exception('This must be ran through setup.py in the terminal-helpers folder')
 
-    if not os.path.isdir(f'{home_dir}/.config/nvim/'):
-        helpers.run_cmd(f'ln -s {current_dir}/nvim/ {home_dir}/.config/')
+    helpers.run_cmd(f'ln -sf {current_dir}/nvim/ {home_dir}/.config/')
+
+    if not helpers.check_zshrc('alias vi="nvim"'):
+        helpers.write_zshrc('alias vi="nvim"')
+
+    if not helpers.check_zshrc('alias vim="nvim"'):
+        helpers.write_zshrc('alias vim="nvim"')
 
