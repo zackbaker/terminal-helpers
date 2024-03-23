@@ -117,7 +117,12 @@ return packer.startup(function(use)
   use "akinsho/toggleterm.nvim"
 
   -- Adding indent lines
-  use "lukas-reineke/indent-blankline.nvim"
+  use {
+    "lukas-reineke/indent-blankline.nvim",
+    config = function ()
+        require('ibl').setup()
+    end
+  }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
