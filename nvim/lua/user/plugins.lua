@@ -129,6 +129,20 @@ return packer.startup(function(use)
         end
     }
 
+    use "github/copilot.vim"
+    use {
+        "CopilotC-Nvim/CopilotChat.nvim",
+        config = function()
+            require("CopilotChat").setup {
+                -- Add your configuration here
+                -- Example: keymaps = { accept = "<C-y>" }
+                context = {
+                    '#buffers'
+                }
+            }
+        end,
+    }
+
     -- For Google Codey Setup still required but needs neovim 0.10.0+ and I have 0.9.0
     -- use {
     --   "olimorris/codecompanion.nvim",
