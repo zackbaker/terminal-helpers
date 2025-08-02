@@ -1,5 +1,4 @@
 local lsp_zero = require('lsp-zero')
--- require('lspconfig').intelephense.setup({})
 
 lsp_zero.on_attach(function(client, bufnr)
   -- see :help lsp-zero-keybindings
