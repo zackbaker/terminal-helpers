@@ -13,4 +13,15 @@ require('mason-lspconfig').setup({
     lsp_zero.default_setup,
   },
 })
+require('tiny-inline-diagnostic').setup({
+    options = {
+        show_all_diags_on_cursorline = true,
+        add_messages = {
+            display_count = true,
+        },
+        multilines = {
+            enabled = true,
+        },
+    },
+})
 

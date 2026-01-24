@@ -68,6 +68,8 @@ return packer.startup(function(use)
 
             -- LSP Support
             {'neovim/nvim-lspconfig'},
+            {'rachartier/tiny-inline-diagnostic.nvim'},
+
             -- Autocompletion
             {'hrsh7th/nvim-cmp'},
             {'hrsh7th/cmp-nvim-lsp'},
@@ -119,7 +121,7 @@ return packer.startup(function(use)
     }
 
     -- Terminal Integration
-    use "akinsho/toggleterm.nvim"
+    -- use "akinsho/toggleterm.nvim"
 
     -- Adding indent lines
     use {
