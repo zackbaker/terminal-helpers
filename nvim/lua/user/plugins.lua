@@ -131,33 +131,43 @@ return packer.startup(function(use)
         end
     }
 
-    use "github/copilot.vim"
+    -- AI Integration
+    use 'MunifTanjim/nui.nvim'
+    use 'MeanderingProgrammer/render-markdown.nvim'
+    use 'HakonHarnes/img-clip.nvim'
     use {
-        "CopilotC-Nvim/CopilotChat.nvim",
+        'zbirenbaum/copilot.lua',
         config = function()
-            require("CopilotChat").setup {
-                -- Add your configuration here
-                -- Example: keymaps = { accept = "<C-y>" }
-                context = {
-                    '#buffers'
-                }
-            }
-        end,
+            require("copilot").setup({})
+        end
+    }
+    use 'stevearc/dressing.nvim'
+    use 'folke/snacks.nvim'
+
+    use {
+        'yetone/avante.nvim',
+        branch = 'main',
+        run = 'make',
+        config = function()
+            require('avante').setup({
+                provider = 'copilot',
+                auto_suggestions_provider = nil,
+            })
+        end
     }
 
-    -- For Google Codey Setup still required but needs neovim 0.10.0+ and I have 0.9.0
+    -- use "github/copilot.vim"
     -- use {
-    --   "olimorris/codecompanion.nvim",
-    --   config = function()
-    --     require("codecompanion").setup()
-    --   end,
-    --   requires = {
-    --     "nvim-lua/plenary.nvim",
-    --     "nvim-treesitter/nvim-treesitter",
-    --     "hrsh7th/nvim-cmp", -- Optional: For using slash commands and variables in the chat buffer
-    --     "nvim-telescope/telescope.nvim", -- Optional: For using slash commands
-    --     "stevearc/dressing.nvim" -- Optional: Improves `vim.ui.select`
-    --   }
+    --     "CopilotC-Nvim/CopilotChat.nvim",
+    --     config = function()
+    --         require("CopilotChat").setup {
+    --             -- Add your configuration here
+    --             -- Example: keymaps = { accept = "<C-y>" }
+    --             context = {
+    --                 '#buffers'
+    --             }
+    --         }
+    --     end,
     -- }
 
     -- Automatically set up your configuration after cloning packer.nvim
